@@ -52,7 +52,7 @@ export default function LandingPage() {
             </div>
 
             {/* Quick Stats */}
-            <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
+            {/* <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
               {[
                 { label: "Active Users", value: "250K+" },
                 { label: "Casts Analyzed", value: "12M+" },
@@ -69,7 +69,7 @@ export default function LandingPage() {
                   <div className="text-sm text-gray-400">{stat.label}</div>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
