@@ -32,7 +32,7 @@ export default function LandingPage() {
 
             {/* Subheading */}
             <p className="text-xl sm:text-2xl md:text-3xl font-light text-gray-200 max-w-2xl mx-auto leading-relaxed mb-4">
-              Native analytics for{" "}
+              analytics for{" "}
               <span className="font-semibold text-purple-400">Farcaster</span>
             </p>
 

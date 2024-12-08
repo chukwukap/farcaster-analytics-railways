@@ -9,20 +9,20 @@ export async function getUserAnalytics(
     profile: {
       username: username,
       displayName: "Test User",
-      followerCount: 1234,
-      followingCount: 567,
+      followerCount: 116,
+      followingCount: 116,
       userCreatedAtBlockTimestamp: "2023-01-01T00:00:00Z",
       profileImage: "https://picsum.photos/200",
     },
     stats: {
-      postCount: 789,
-      likeCount: 4321,
-      recastCount: 234,
-      replyCount: 567,
+      postCount: 0,
+      likeCount: 0,
+      recastCount: 0,
+      replyCount: 0,
     },
-    engagement: 5.67,
-    followers: 1234,
-    posts: 789,
+    engagement: 0,
+    followers: 116,
+    posts: 0,
   };
   // return mockData;
 
