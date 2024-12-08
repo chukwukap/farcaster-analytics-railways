@@ -1,51 +1,55 @@
 import { init, fetchQuery } from "@airstack/node";
+import { FarcasterUserStats, Profile } from "./types";
 
 init(process.env.AIRSTACK_API_KEY as string);
 
 const FARCASTER_USER_QUERY = `
-query GetFarcasterUser($username: String!) {
-  Socials(
-    input: {
-      filter: { dappName: { _eq: farcaster }, identity: { _eq: $username } }
-      blockchain: ethereum
-    }
-  ) {
-    Social {
-      profileName
-      userId
-      userAssociatedAddresses
-      followingCount
-      followerCount
-      profileImageContentValue {
-        image {
-          small
+    query SearchFarcasterUsers($username: String!) {
+      Socials(
+        input: {
+          filter: { 
+            dappName: { _eq: farcaster },
+            profileName: { _regex: $username }
+          },
+          blockchain: ethereum,
+          limit: 15
+        }
+      ) {
+        Social {
+          profileName
+          userId
+          profileDisplayName
+          followerCount
+          followingCount
+          profileImageContentValue {
+            image {
+              original
+            }
+          }
         }
       }
-      userCreatedAtBlockTimestamp
     }
-  }
-}
-`;
+  `;
 
 const FARCASTER_USER_STATS_QUERY = `
-query GetFarcasterUserStats($userId: String!) {
-  FarcasterStats: Socials(
-    input: {
-      filter: { dappName: { _eq: farcaster }, userId: { _eq: $userId } }
-      blockchain: ethereum
+query GetFarcasterUserStats($username: String!) {
+      Socials(
+        input: {
+          filter: { 
+            dappName: { _eq: farcaster },
+            profileName: { _regex: $username }
+          },
+          blockchain: ethereum,
+          limit: 15
+        }
+      ) {
+        Social {
+          followerCount
+          followingCount
+        }
+      }
     }
-  ) {
-    Social {
-      followerCount
-      followingCount
-      recastCount
-      likeCount
-      replyCount
-      postCount
-    }
-  }
-}
-`;
+  `;
 
 export async function queryAirstack(
   query: string,
@@ -61,12 +65,14 @@ export async function queryAirstack(
   }
 }
 
-export async function getFarcasterUser(username: string) {
+export async function getFarcasterUser(username: string): Promise<Profile> {
   const data = await queryAirstack(FARCASTER_USER_QUERY, { username });
   return data?.Socials?.Social?.[0];
 }
 
-export async function getFarcasterUserStats(userId: string) {
-  const data = await queryAirstack(FARCASTER_USER_STATS_QUERY, { userId });
-  return data?.FarcasterStats?.Social?.[0];
+export async function getFarcasterUserStats(
+  username: string
+): Promise<FarcasterUserStats> {
+  const data = await queryAirstack(FARCASTER_USER_STATS_QUERY, { username });
+  return data?.Socials?.Social?.[0];
 }

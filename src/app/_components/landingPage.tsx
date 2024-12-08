@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
+import Footer from "~/components/layout/footer";
+import Header from "~/components/layout/header";
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-[#1C1C1C]">
-      {/* Hero Section */}
-      <section className="relative px-4 pt-24 sm:pt-32 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex flex-col ">
+      <Header />
+      <section className="relative flex-grow px-4 pt-24 sm:pt-32 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Hero Content */}
           <div className="flex flex-col items-center text-center">
@@ -15,10 +17,12 @@ export default function LandingPage() {
                 src="/warpcast.svg"
                 alt="Warpcast Logo"
                 className="h-6 w-6"
+                width={24}
+                height={24}
               />
-              <span className="text-sm text-purple-400 font-medium">
+              {/* <span className="text-sm text-purple-400 font-medium">
                 Official Analytics Partner
-              </span>
+              </span> */}
             </div>
 
             {/* Main Heading */}
@@ -50,29 +54,10 @@ export default function LandingPage() {
                 View Analytics
               </Link>
             </div>
-
-            {/* Quick Stats */}
-            {/* <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
-              {[
-                { label: "Active Users", value: "250K+" },
-                { label: "Casts Analyzed", value: "12M+" },
-                { label: "Daily Insights", value: "500K+" },
-                { label: "Channels", value: "1000+" },
-              ].map((stat, index) => (
-                <div
-                  key={index}
-                  className="p-4 rounded-lg bg-gray-800/30 border border-gray-700/50"
-                >
-                  <div className="text-xl sm:text-2xl font-bold text-white mb-1">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-gray-400">{stat.label}</div>
-                </div>
-              ))}
-            </div> */}
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }
