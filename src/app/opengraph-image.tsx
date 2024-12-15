@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { appUrl } from "~/lib/constants";
 
 export const alt = "Farsight - Analytics for Farcaster";
 export const size = {
@@ -14,9 +15,8 @@ export default async function Image() {
       <div tw="h-full w-full flex flex-col justify-center items-center relative bg-[#0F0F0F]">
         <div tw="flex items-center gap-3 mb-6">
           <div tw="w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center">
-            {/* @ts-ignore Server Component */}
             <img
-              src={new URL("./icon.png", import.meta.url).toString()}
+              src={`${appUrl}/icon.png`}
               width="24"
               height="24"
               alt="Farsight icon"
