@@ -34,17 +34,11 @@ export async function getFarcasterUserCasts(
   ) {
     Cast {
       castedAtTimestamp
-      embeds
-      url
       text
       numberOfRecasts
       numberOfLikes
       channel {
         channelId
-      }
-      mentions {
-        fid
-        position
       }
     }
   }
@@ -72,27 +66,23 @@ export async function getFarcasterUserReactions(
     Reaction {
       cast {
         castedAtTimestamp
-        embeds
-        url
         text
         numberOfRecasts
         numberOfLikes
         channel {
           channelId
         }
-        mentions {
-          fid
-          position
-        }
       }
     }
   }
 }`;
+
   const data = await queryAirstack(FARCASTER_USER_REACTIONS_QUERY, {
     fid: fid.toString(),
   });
   return data;
 }
+
 export async function getUserDetails(fid: number): Promise<UserDetails> {
   const USER_DETAILS_QUERY = ` query MyQuery {
   Socials(
@@ -104,34 +94,14 @@ export async function getUserDetails(fid: number): Promise<UserDetails> {
     Social {
       id
       chainId
-      blockchain
       followerCount
       followingCount
-      dappName
-      dappSlug
-      dappVersion
-      userId
-      userAddress
       userCreatedAtBlockTimestamp
-      userCreatedAtBlockNumber
-      userLastUpdatedAtBlockTimestamp
-      userLastUpdatedAtBlockNumber
-      userHomeURL
-      userRecoveryAddress
-      userAssociatedAddresses
       profileBio
       profileDisplayName
       profileImage
       profileUrl
       profileName
-      profileTokenId
-      profileTokenAddress
-      profileCreatedAtBlockTimestamp
-      profileCreatedAtBlockNumber
-      profileLastUpdatedAtBlockTimestamp
-      profileLastUpdatedAtBlockNumber
-      profileTokenUri
-      isDefault
       identity
       fnames
     }

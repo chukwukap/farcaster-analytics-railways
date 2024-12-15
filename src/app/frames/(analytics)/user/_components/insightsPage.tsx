@@ -42,7 +42,7 @@ export default function UserInsightsPage() {
   const [activeTab, setActiveTab] = useState<
     "overview" | "engagement" | "content"
   >("overview");
-  const [error] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const load = async () => {
@@ -61,12 +61,16 @@ export default function UserInsightsPage() {
         `/api/analytics/user?fid=${fid}&timeRange=${timeRange}`
       );
       const data = await response.json();
-      setAnalytics(data);
+      if (data.error) {
+        setError(data.error);
+      } else {
+        setAnalytics(data);
+      }
     };
 
     if (isSDKLoaded && context?.user?.fid) {
       fetchAnalytics(context.user.fid);
-    }
+    } 
   }, [isSDKLoaded, timeRange, context?.user?.fid]);
 
   const renderTabContent = () => {

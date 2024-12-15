@@ -10,10 +10,10 @@ export interface FarcasterUserCasts {
       channel: {
         channelId: string;
       };
-      mentions: Array<{
-        fid: number;
-        position: number;
-      }>;
+      // mentions: Array<{
+      //   fid: number;
+      //   position: number;
+      // }>;
     }>;
   };
 }
@@ -22,24 +22,24 @@ export interface FarcasterUserReactions {
   FarcasterReactions: {
     Reaction: Array<{
       cast: {
-        castedAtTimestamp: string;
-        embeds: Array<{
-          castId?: {
-            fid: number;
-            hash: string;
-          };
-        }>;
-        url: string;
+        // castedAtTimestamp: string;
+        // embeds: Array<{
+        //   castId?: {
+        //     fid: number;
+        //     hash: string;
+        //   };
+        // }>;
+        // url: string;
         text: string;
         numberOfRecasts: number;
         numberOfLikes: number;
-        channel: {
-          channelId: string;
-        };
-        mentions: Array<{
-          fid: string | number;
-          position: number;
-        }>;
+        // channel: {
+        //   channelId: string;
+        // };
+        // mentions: Array<{
+        //   fid: string | number;
+        //   position: number;
+        // }>;
       };
     }>;
   };
@@ -48,39 +48,38 @@ export interface FarcasterUserReactions {
 export interface UserDetails {
   Socials: {
     Social: Array<{
-      id: string;
-      chainId: string;
-      blockchain: string;
+      // id: string;
+      // chainId: string;
+      // blockchain: string;
       followerCount: number;
       followingCount: number;
-      dappName: string;
-      dappSlug: string;
-      dappVersion: string;
-      userId: string;
-      userAddress: string;
+      // dappName: string;
+      // dappSlug: string;
+      // dappVersion: string;
+      // userId: string;
+      // userAddress: string;
       userCreatedAtBlockTimestamp: string;
-      userCreatedAtBlockNumber: number;
-      userLastUpdatedAtBlockTimestamp: string;
-      userLastUpdatedAtBlockNumber: number;
-      userHomeURL: string;
-      userRecoveryAddress: string;
+      // userCreatedAtBlockNumber: number;
+      // userLastUpdatedAtBlockTimestamp: string;
+      // userLastUpdatedAtBlockNumber: number;
+      // userHomeURL: string;
+      // userRecoveryAddress: string;
       userAssociatedAddresses: string[];
       profileBio: string;
       profileDisplayName: string;
       profileImage: string;
-      profileUrl: string;
+      // profileUrl: string;
       profileName: string;
-      profileTokenId: string;
-      profileTokenAddress: string;
-      profileCreatedAtBlockTimestamp: string;
-      profileCreatedAtBlockNumber: number;
-      profileLastUpdatedAtBlockTimestamp: string;
-      profileLastUpdatedAtBlockNumber: number;
-      profileTokenUri: string;
-      isDefault: boolean;
-      identity: string;
-      fnames: string[];
-      isFarcasterPowerUser: boolean;
+      // profileTokenId: string;
+      // profileTokenAddress: string;
+      // profileCreatedAtBlockTimestamp: string;
+      // profileCreatedAtBlockNumber: number;
+      // profileLastUpdatedAtBlockTimestamp: string;
+      // profileLastUpdatedAtBlockNumber: number;
+      // profileTokenUri: string;
+      // isDefault: boolean;
+      // identity: string;
+      // fnames: string[];
     }>;
   };
 }
@@ -90,25 +89,25 @@ export interface UserTrendingCasts {
     TrendingCast: Array<{
       criteria: string;
       criteriaCount: number;
-      hash: string;
-      id: string;
+      // hash: string;
+      // id: string;
       castValueFormatted: number;
-      castValueRaw: string;
+      // castValueRaw: string;
       timeFrom: string;
       timeTo: string;
       cast: {
         text: string;
-        mentions: Array<{
-          fid: number;
-          position: number;
-        }>;
-        embeds: Array<{
-          castId: {
-            fid: number;
-            hash: string;
-          };
-        }>;
-        url: string;
+        // mentions: Array<{
+        //   fid: number;
+        //   position: number;
+        // }>;
+        // embeds: Array<{
+        //   castId: {
+        //     fid: number;
+        //     hash: string;
+        //   };
+        // }>;
+        // url: string;
       };
     }>;
   };
