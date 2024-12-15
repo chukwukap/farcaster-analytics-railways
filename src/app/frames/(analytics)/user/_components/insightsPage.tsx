@@ -259,11 +259,7 @@ export default function UserInsightsPage() {
     }
   };
 
-  if (error) {
-    return <h1>{error}</h1>;
-  }
-
-  if (!loading) {
+  if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-[#0A0F1E]">
         <div className="flex flex-col items-center animate-fade-in">
@@ -276,7 +272,7 @@ export default function UserInsightsPage() {
     );
   }
 
-  if (!analytics) {
+  if (error) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-[#0A0F1E]">
         <div className="bg-slate-800/40 backdrop-blur-sm rounded-2xl p-8 border border-red-500/20 text-center">
@@ -311,8 +307,8 @@ export default function UserInsightsPage() {
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-violet-600 via-pink-500 to-cyan-400 rounded-full opacity-75 blur-lg group-hover:opacity-100 transition duration-500"></div>
               <Image
-                src={analytics.profile.profileImage}
-                alt={analytics.profile.username}
+                src={analytics?.profile.profileImage || ""}
+                alt={analytics?.profile.username || ""}
                 className="relative w-32 h-32 rounded-full object-cover border-4 border-slate-900"
                 width={128}
                 height={128}
@@ -321,29 +317,31 @@ export default function UserInsightsPage() {
             </div>
             <div className="text-center md:text-left">
               <h1 className="text-5xl font-bold bg-gradient-to-r from-violet-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
-                @{analytics.profile.username}
+                @{analytics?.profile.username || ""}
               </h1>
-              <p className="mt-2 text-gray-400">{analytics.profile.bio}</p>
+              <p className="mt-2 text-gray-400">
+                {analytics?.profile.bio || ""}
+              </p>
               <div className="flex flex-wrap gap-4 mt-4">
                 <MetricPill
                   label="Total Casts"
-                  value={analytics.activityStats.totalCasts}
+                  value={analytics?.activityStats.totalCasts || 0}
                 />
                 <MetricPill
                   label="Total Likes"
-                  value={analytics.activityStats.totalLikes}
+                  value={analytics?.activityStats.totalLikes || 0}
                 />
                 <MetricPill
                   label="Total Recasts"
-                  value={analytics.activityStats.totalRecasts}
+                  value={analytics?.activityStats.totalRecasts || 0}
                 />
                 <MetricPill
                   label="Followers"
-                  value={analytics.profile.followerCount || 0}
+                  value={analytics?.profile.followerCount || 0}
                 />
                 <MetricPill
                   label="Following"
-                  value={analytics.profile.followingCount || 0}
+                  value={analytics?.profile.followingCount || 0}
                 />
               </div>
             </div>
