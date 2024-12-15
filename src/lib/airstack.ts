@@ -22,7 +22,7 @@ export async function queryAirstack(
   }
 }
 export async function getFarcasterUserCasts(
-  fid: string
+  fid: number
 ): Promise<FarcasterUserCasts> {
   const FARCASTER_USER_CASTS_QUERY = ` query MyQuery {
   FarcasterCasts(
@@ -49,12 +49,14 @@ export async function getFarcasterUserCasts(
     }
   }
 }`;
-  const data = await queryAirstack(FARCASTER_USER_CASTS_QUERY, { fid });
+  const data = await queryAirstack(FARCASTER_USER_CASTS_QUERY, {
+    fid: fid.toString(),
+  });
   console.log("data", data);
   return data;
 }
 export async function getFarcasterUserReactions(
-  fid: string
+  fid: number
 ): Promise<FarcasterUserReactions> {
   const FARCASTER_USER_REACTIONS_QUERY = ` query MyQuery {
   FarcasterReactions(
@@ -87,11 +89,11 @@ export async function getFarcasterUserReactions(
   }
 }`;
   const data = await queryAirstack(FARCASTER_USER_REACTIONS_QUERY, {
-    fid,
+    fid: fid.toString(),
   });
   return data;
 }
-export async function getUserDetails(fid: string): Promise<UserDetails> {
+export async function getUserDetails(fid: number): Promise<UserDetails> {
   const USER_DETAILS_QUERY = ` query MyQuery {
   Socials(
     input: {
@@ -135,11 +137,13 @@ export async function getUserDetails(fid: string): Promise<UserDetails> {
     }
   }
 }`;
-  const data = await queryAirstack(USER_DETAILS_QUERY, { fid });
+  const data = await queryAirstack(USER_DETAILS_QUERY, {
+    fid: fid.toString(),
+  });
   return data;
 }
 export async function getUserTrendingCasts(
-  fid: string
+  fid: number
 ): Promise<UserTrendingCasts> {
   const FARCASTER_USER_CASTS_QUERY = `query MyQuery(
   $criteria: TrendingCastsCriteria!
@@ -176,7 +180,7 @@ export async function getUserTrendingCasts(
   }
 }`;
   const data = await queryAirstack(FARCASTER_USER_CASTS_QUERY, {
-    fid,
+    fid: fid.toString(),
     timeFrame: "seven_days",
     criteria: "social_capital_value",
   });

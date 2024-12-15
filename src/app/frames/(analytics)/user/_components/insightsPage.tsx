@@ -38,30 +38,36 @@ export default function UserInsightsPage() {
   const [isSDKLoaded, setIsSDKLoaded] = useState(false);
   const [context, setContext] = useState<FrameContext>();
   const [analytics, setAnalytics] = useState<UserAnalytics | null>(null);
-
   const [timeRange, setTimeRange] = useState<"week" | "month" | "year">("week");
   const [activeTab, setActiveTab] = useState<
     "overview" | "engagement" | "content"
   >("overview");
+  const [error] = useState<string | null>(null);
 
   useEffect(() => {
     const load = async () => {
       setContext(await sdk.context);
-
-      const response = await fetch(
-        `/api/analytics/user?fid=${
-          context?.user?.fid || "755074"
-        }&timeRange=${timeRange}`
-      );
-      const data = await response.json();
-      setAnalytics(data);
       sdk.actions.ready();
     };
     if (sdk && !isSDKLoaded) {
       setIsSDKLoaded(true);
       load();
     }
-  }, [isSDKLoaded, timeRange]);
+  }, [isSDKLoaded]);
+
+  useEffect(() => {
+    const fetchAnalytics = async (fid: number) => {
+      const response = await fetch(
+        `/api/analytics/user?fid=${fid}&timeRange=${timeRange}`
+      );
+      const data = await response.json();
+      setAnalytics(data);
+    };
+
+    if (isSDKLoaded && context?.user?.fid) {
+      fetchAnalytics(context.user.fid);
+    }
+  }, [isSDKLoaded, timeRange, context?.user?.fid]);
 
   const renderTabContent = () => {
     switch (activeTab) {
@@ -245,6 +251,10 @@ export default function UserInsightsPage() {
         );
     }
   };
+
+  if (error) {
+    return <h1>{error}</h1>;
+  }
 
   if (!analytics) {
     return (

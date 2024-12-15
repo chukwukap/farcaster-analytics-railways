@@ -4,7 +4,7 @@ import { getUserAnalytics } from "~/lib/analytics";
 // export const revalidate = 60 * 60 * 24; // 1 day
 
 export async function GET(request: NextRequest) {
-  const fid = request.nextUrl.searchParams.get("fid");
+  const fid = Number(request.nextUrl.searchParams.get("fid"));
   const timeRange =
     (request.nextUrl.searchParams.get("timeRange") as
       | "week"
@@ -18,7 +18,12 @@ export async function GET(request: NextRequest) {
 
   try {
     const userAnalytics = await getUserAnalytics(fid, timeRange);
-    console.log("userAnalytics", userAnalytics);
+    if (!userAnalytics) {
+      return NextResponse.json(
+        { error: "Error fetching analytics" },
+        { status: 500 }
+      );
+    }
     return NextResponse.json(userAnalytics);
   } catch (error) {
     console.error("Error fetching analytics:", error);

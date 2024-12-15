@@ -7,7 +7,7 @@ import {
 import { UserAnalytics } from "../types";
 
 export async function getUserAnalytics(
-  fid: string,
+  fid: number,
   timeRange: "week" | "month" | "year"
 ): Promise<UserAnalytics | null> {
   if (!fid) return null;
