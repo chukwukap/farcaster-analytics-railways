@@ -43,6 +43,7 @@ export default function UserInsightsPage() {
     "overview" | "engagement" | "content"
   >("overview");
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const load = async () => {
@@ -57,6 +58,7 @@ export default function UserInsightsPage() {
 
   useEffect(() => {
     const fetchAnalytics = async (fid: number) => {
+      setLoading(true);
       const response = await fetch(
         `/api/analytics/user?fid=${fid}&timeRange=${timeRange}`
       );
@@ -66,11 +68,12 @@ export default function UserInsightsPage() {
       } else {
         setAnalytics(data);
       }
+      setLoading(false);
     };
 
     if (isSDKLoaded && context?.user?.fid) {
       fetchAnalytics(context.user.fid);
-    } 
+    }
   }, [isSDKLoaded, timeRange, context?.user?.fid]);
 
   const renderTabContent = () => {
@@ -260,7 +263,7 @@ export default function UserInsightsPage() {
     return <h1>{error}</h1>;
   }
 
-  if (!analytics) {
+  if (!loading) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-[#0A0F1E]">
         <div className="flex flex-col items-center animate-fade-in">
@@ -268,6 +271,32 @@ export default function UserInsightsPage() {
           <p className="text-violet-400 font-semibold text-lg">
             Analyzing your Farcaster presence...
           </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!analytics) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-[#0A0F1E]">
+        <div className="bg-slate-800/40 backdrop-blur-sm rounded-2xl p-8 border border-red-500/20 text-center">
+          <svg
+            className="w-16 h-16 mx-auto text-red-500 mb-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+            />
+          </svg>
+          <h1 className="text-xl font-semibold text-red-400">
+            Unable to Load Analytics
+          </h1>
+          <p className="text-gray-400 mt-2">Please try refreshing the page</p>
         </div>
       </div>
     );

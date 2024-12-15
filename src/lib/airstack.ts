@@ -6,7 +6,7 @@ import {
   UserTrendingCasts,
 } from "./types";
 
-init(process.env.AIRSTACK_API_KEY as string);
+init("1cdce8f5b28b94245b9e354dfbef9a1f5");
 
 export async function queryAirstack(
   query: string,
