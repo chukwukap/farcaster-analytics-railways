@@ -1,1 +1,2 @@
-export const appUrl = "https://begin-spread-jeffrey-doing.trycloudflare.com";
+export const appUrl =
+  process.env.NEXT_PUBLIC_URL || "https://farcaster-insights.vercel.app";

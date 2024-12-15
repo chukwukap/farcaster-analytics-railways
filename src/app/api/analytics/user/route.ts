@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getUserAnalytics } from "~/lib/analytics";
 
-export const revalidate = 60 * 60 * 24; // 1 day
+// export const revalidate = 60 * 60 * 24; // 1 day
 
 export async function GET(request: NextRequest) {
   const fid = request.nextUrl.searchParams.get("fid");
