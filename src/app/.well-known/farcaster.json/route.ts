@@ -1,22 +1,45 @@
+import { generateFarcasterSignature } from "../../../lib/generateFarcasterSignature";
+
 export async function GET() {
   const appUrl = process.env.NEXT_PUBLIC_URL;
+
+  // const data_ = await generateFarcasterSignature(
+  //   "https://farcaster-analytics.vercel.app",
+  //   755074,
+  //   "0x9250280D1557545d647Db311554c4c6b819a5EE0",
+  //   ""
+  // );
+
+  const data = {
+    compact:
+      "eyJmaWQiOjc1NTA3NCwidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDkyNTAyODBEMTU1NzU0NWQ2NDdEYjMxMTU1NGM0YzZiODE5YTVFRTAifQ.eyJkb21haW4iOiJodHRwczovL2ZhcmNhc3Rlci1hbmFseXRpY3MudmVyY2VsLmFwcCJ9.MHgyN2ZlYjc4NmNkMTAzNDk0NTkxZDRhZjMyNWIzYzUwZWJjNzVkMzkzMGJjNGU0NjZmZmZkYWM3Y2U1Mjc5MjI1MTA3OWE5OWI4ZWIyZTQ0MDc4NDAxY2Q1ODc1Njg3OWM5NDhmOWVlYzI0MjZkMTk3N2U3YzJjNjcwZTEwNzRlZjFj",
+    json: {
+      header:
+        "eyJmaWQiOjc1NTA3NCwidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDkyNTAyODBEMTU1NzU0NWQ2NDdEYjMxMTU1NGM0YzZiODE5YTVFRTAifQ",
+      payload:
+        "eyJkb21haW4iOiJodHRwczovL2ZhcmNhc3Rlci1hbmFseXRpY3MudmVyY2VsLmFwcCJ9",
+      signature:
+        "MHgyN2ZlYjc4NmNkMTAzNDk0NTkxZDRhZjMyNWIzYzUwZWJjNzVkMzkzMGJjNGU0NjZmZmZkYWM3Y2U1Mjc5MjI1MTA3OWE5OWI4ZWIyZTQ0MDc4NDAxY2Q1ODc1Njg3OWM5NDhmOWVlYzI0MjZkMTk3N2U3YzJjNjcwZTEwNzRlZjFj",
+    },
+  };
 
   const config = {
     accountAssociation: {
       header:
-        "eyJmaWQiOjM2MjEsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHgyY2Q4NWEwOTMyNjFmNTkyNzA4MDRBNkVBNjk3Q2VBNENlQkVjYWZFIn0",
-      payload: "eyJkb21haW4iOiJmcmFtZXMtdjIudmVyY2VsLmFwcCJ9",
+        "eyJmaWQiOjc1NTA3NCwidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDkyNTAyODBEMTU1NzU0NWQ2NDdEYjMxMTU1NGM0YzZiODE5YTVFRTAifQ",
+      payload:
+        "eyJkb21haW4iOiJodHRwczovL2ZhcmNhc3Rlci1hbmFseXRpY3MudmVyY2VsLmFwcCJ9",
       signature:
-        "MHhiNDIwMzQ1MGZkNzgzYTExZjRiOTllZTFlYjA3NmMwOTdjM2JkOTY1NGM2ODZjYjkyZTAyMzk2Y2Q0YjU2MWY1MjY5NjI5ZGQ5NTliYjU0YzEwOGI4OGVmNjdjMTVlZTdjZDc2YTRiMGU5NzkzNzA3YzkxYzFkOWFjNTg0YmQzNjFi",
+        "MHgyN2ZlYjc4NmNkMTAzNDk0NTkxZDRhZjMyNWIzYzUwZWJjNzVkMzkzMGJjNGU0NjZmZmZkYWM3Y2U1Mjc5MjI1MTA3OWE5OWI4ZWIyZTQ0MDc4NDAxY2Q1ODc1Njg3OWM5NDhmOWVlYzI0MjZkMTk3N2U3YzJjNjcwZTEwNzRlZjFj",
     },
     frame: {
-      version: "0.0.0",
-      name: "Frames v2 Demo",
-      iconUrl: `${appUrl}/icon.png`,
-      splashImageUrl: `${appUrl}/splash.png`,
-      splashBackgroundColor: "#f7f7f7",
+      version: "0.0.1",
+      name: "Farcaster analytics",
+      iconUrl: `farcaster-analytics.vercel.app/icon.png`,
+      splashImageUrl: `farcaster-analytics.vercel.app/splash.png`,
+      splashBackgroundColor: "#000080",
       homeUrl: appUrl,
-      webhookUrl: `${appUrl}/api/webhook`,
+      webhookUrl: `farcaster-analytics.vercel.app/api/webhook`,
     },
   };
 

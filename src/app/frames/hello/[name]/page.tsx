@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import App from "~/app/app";
+import { appUrl as appUrlConstant } from "~/lib/constants";
 
-const appUrl = process.env.NEXT_PUBLIC_URL;
+const appUrl = appUrlConstant;
 
 interface Props {
   params: Promise<{

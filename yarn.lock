@@ -490,7 +490,7 @@
   resolved "https://registry.npmjs.org/@noble/ciphers/-/ciphers-1.1.0.tgz"
   integrity sha512-gwcX7IKSuCtlepJVa6sDLMB2EDaoLguFL6HxagKeFIzWGRfFE3mwcHs8mjx4yQY+rV736XGBhfl6Lw80YrTDTw==
 
-"@noble/curves@^1.4.0", "@noble/curves@^1.6.0", "@noble/curves@~1.7.0":
+"@noble/curves@^1.4.0", "@noble/curves@^1.6.0", "@noble/curves@~1.7.0", "@noble/curves@1.7.0":
   version "1.7.0"
   resolved "https://registry.npmjs.org/@noble/curves/-/curves-1.7.0.tgz"
   integrity sha512-UTMhXK9SeDhFJVrHeUJ5uZlI6ajXg10O6Ddocf9S6GjbSBVZsJo88HzKwXznNfGpMTRDyJkqMjNDPYgf0qFWnw==
@@ -504,14 +504,7 @@
   dependencies:
     "@noble/hashes" "1.4.0"
 
-"@noble/curves@~1.6.0", "@noble/curves@1.6.0":
-  version "1.6.0"
-  resolved "https://registry.npmjs.org/@noble/curves/-/curves-1.6.0.tgz"
-  integrity sha512-TlaHRXDehJuRNR9TfZDNQ45mMEd5dwUwmicsafcIX4SsNiqnCHKjE/1alYPd/lDRVhxdhUAlv8uEhMCI5zjIJQ==
-  dependencies:
-    "@noble/hashes" "1.5.0"
-
-"@noble/hashes@^1.3.1", "@noble/hashes@^1.4.0", "@noble/hashes@^1.5.0", "@noble/hashes@~1.6.0":
+"@noble/hashes@^1.3.1", "@noble/hashes@^1.4.0", "@noble/hashes@^1.5.0", "@noble/hashes@~1.6.0", "@noble/hashes@1.6.1":
   version "1.6.1"
   resolved "https://registry.npmjs.org/@noble/hashes/-/hashes-1.6.1.tgz"
   integrity sha512-pq5D8h10hHBjyqX+cfBm0i8JUXJ0UhczFc4r74zbuT9XgewFo2E3J1cOaGtdZynILNmQ685YWGzGE1Zv6io50w==
@@ -520,11 +513,6 @@
   version "1.4.0"
   resolved "https://registry.npmjs.org/@noble/hashes/-/hashes-1.4.0.tgz"
   integrity sha512-V1JJ1WTRUqHHrOSh597hURcMqVKVGL/ea3kv0gSnEdsEZ0/+VyPghM1lMNGc00z7CIQorSvbKpuJkxvuHbvdbg==
-
-"@noble/hashes@~1.5.0", "@noble/hashes@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.npmjs.org/@noble/hashes/-/hashes-1.5.0.tgz"
-  integrity sha512-1j6kQFb7QRru7eKN3ZDvRcP13rugwdxZqCjbiAVZfIJwgj2A65UmT4TgARXGlXgnRkORLTDTrO19ZErt7+QXgA==
 
 "@noble/hashes@1.6.0":
   version "1.6.0"
@@ -641,12 +629,7 @@
   resolved "https://registry.npmjs.org/@scure/base/-/base-1.1.9.tgz"
   integrity sha512-8YKhl8GHiNI/pU2VMaofa2Tor7PJRAjwQLBBuilkJ9L5+13yVbC7JO/wS7piioAvPSwR3JKM1IJ/u4xQzbcXKg==
 
-"@scure/base@~1.1.7", "@scure/base@~1.1.8":
-  version "1.1.9"
-  resolved "https://registry.npmjs.org/@scure/base/-/base-1.1.9.tgz"
-  integrity sha512-8YKhl8GHiNI/pU2VMaofa2Tor7PJRAjwQLBBuilkJ9L5+13yVbC7JO/wS7piioAvPSwR3JKM1IJ/u4xQzbcXKg==
-
-"@scure/bip32@^1.5.0":
+"@scure/bip32@^1.5.0", "@scure/bip32@1.6.0":
   version "1.6.0"
   resolved "https://registry.npmjs.org/@scure/bip32/-/bip32-1.6.0.tgz"
   integrity sha512-82q1QfklrUUdXJzjuRU7iG7D7XiFx5PHYVS0+oeNKhyDLT7WPqs6pBcM2W5ZdwOwKCwoE1Vy1se+DHjcXwCYnA==
@@ -664,16 +647,7 @@
     "@noble/hashes" "~1.4.0"
     "@scure/base" "~1.1.6"
 
-"@scure/bip32@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.npmjs.org/@scure/bip32/-/bip32-1.5.0.tgz"
-  integrity sha512-8EnFYkqEQdnkuGBVpCzKxyIwDCBLDVj3oiX0EKUFre/tOjL/Hqba1D6n/8RcmaQy4f95qQFrO2A8Sr6ybh4NRw==
-  dependencies:
-    "@noble/curves" "~1.6.0"
-    "@noble/hashes" "~1.5.0"
-    "@scure/base" "~1.1.7"
-
-"@scure/bip39@^1.4.0":
+"@scure/bip39@^1.4.0", "@scure/bip39@1.5.0":
   version "1.5.0"
   resolved "https://registry.npmjs.org/@scure/bip39/-/bip39-1.5.0.tgz"
   integrity sha512-Dop+ASYhnrwm9+HA/HwXg7j2ZqM6yk2fyLWb5znexjctFY3+E+eU8cIWI0Pql0Qx4hPZCijlGq4OL71g+Uz30A==
@@ -688,14 +662,6 @@
   dependencies:
     "@noble/hashes" "~1.4.0"
     "@scure/base" "~1.1.6"
-
-"@scure/bip39@1.4.0":
-  version "1.4.0"
-  resolved "https://registry.npmjs.org/@scure/bip39/-/bip39-1.4.0.tgz"
-  integrity sha512-BEEm6p8IueV/ZTfQLp/0vhw4NPnT9oWf5+28nvmeUICjP99f4vr2d+qc7AVGDDtwRep6ifR43Yed9ERVmiITzw==
-  dependencies:
-    "@noble/hashes" "~1.5.0"
-    "@scure/base" "~1.1.8"
 
 "@socket.io/component-emitter@~3.1.0":
   version "3.1.2"
@@ -1283,15 +1249,10 @@
     "@walletconnect/window-getters" "^1.0.1"
     tslib "1.14.1"
 
-abitype@^1.0.6:
+abitype@^1.0.6, abitype@1.0.7:
   version "1.0.7"
   resolved "https://registry.npmjs.org/abitype/-/abitype-1.0.7.tgz"
   integrity sha512-ZfYYSktDQUwc2eduYu8C4wOs+RDPmnRYMh7zNfzeMtGGgb0U+6tLGjixUic6mXf5xKKCcgT5Qp6cv39tOARVFw==
-
-abitype@1.0.6:
-  version "1.0.6"
-  resolved "https://registry.npmjs.org/abitype/-/abitype-1.0.6.tgz"
-  integrity sha512-MMSqYh4+C/aVqI2RQaWqbvI4Kxo5cQV40WQ4QFtDnNzCkqChm8MuENhElmynZlO0qUy/ObkEUaXtKqYnx1Kp3A==
 
 acorn-jsx@^5.3.2:
   version "5.3.2"
@@ -4861,16 +4822,16 @@ valtio@1.11.2:
     proxy-compare "2.5.1"
     use-sync-external-store "1.2.0"
 
-viem@^2.1.1, viem@2.x:
-  version "2.21.49"
-  resolved "https://registry.npmjs.org/viem/-/viem-2.21.49.tgz"
-  integrity sha512-NNItYfTv4+yGE5DDKc+S/g2S7KeJn047GwgEYG60FAJlK0FzwuP6lQKSeQ8k7Y4VasfuKPqiT+XiilcCtTRiDQ==
+viem@^2.1.1, viem@^2.21.55:
+  version "2.21.55"
+  resolved "https://registry.npmjs.org/viem/-/viem-2.21.55.tgz"
+  integrity sha512-PgXew7C11cAuEtOSgRyQx2kJxEOPUwIwZA9dMglRByqJuFVA7wSGZZOOo/93iylAA8E15bEdqy9xulU3oKZ70Q==
   dependencies:
-    "@noble/curves" "1.6.0"
-    "@noble/hashes" "1.5.0"
-    "@scure/bip32" "1.5.0"
-    "@scure/bip39" "1.4.0"
-    abitype "1.0.6"
+    "@noble/curves" "1.7.0"
+    "@noble/hashes" "1.6.1"
+    "@scure/bip32" "1.6.0"
+    "@scure/bip39" "1.5.0"
+    abitype "1.0.7"
     isows "1.0.6"
     ox "0.1.2"
     webauthn-p256 "0.0.10"

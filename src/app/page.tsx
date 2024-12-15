@@ -1,31 +1,35 @@
 import { Metadata } from "next";
 import LandingPageClient from "./_components/client";
+import { appUrl as appUrlConstant } from "~/lib/constants";
 
-const appUrl = process.env.NEXT_PUBLIC_URL;
+const appUrl = appUrlConstant;
 
 const frame = {
   version: "next",
   imageUrl: `${appUrl}/opengraph-image`,
   button: {
-    title: "Launch Frame",
+    title: "View Analytics",
     action: {
       type: "launch_frame",
-      name: "Farcaster Frames v2 Demo",
+      name: "Farsight Analytics",
       url: appUrl,
       splashImageUrl: `${appUrl}/splash.png`,
-      splashBackgroundColor: "#f7f7f7",
+      splashBackgroundColor: "#855DCD",
     },
   },
 };
 
-export const revalidate = 300;
+export const revalidate = 300; // 5 minutes
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Farcaster Frames v2 Demo",
+    title: "User Analytics for Farcaster",
+    description:
+      "Track your casts, understand your audience, and grow your presence on Farcaster. Get detailed insights into your engagement, followers, and content performance.",
     openGraph: {
-      title: "Farcaster Frames v2 Demo",
-      description: "A Farcaster Frames v2 demo app.",
+      title: "Analytics for Farcaster",
+      description:
+        "Track your casts, understand your audience, and grow your presence on Farcaster. Get detailed insights into your engagement, followers, and content performance.",
     },
     other: {
       "fc:frame": JSON.stringify(frame),
