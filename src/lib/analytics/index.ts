@@ -1,10 +1,10 @@
 import {
-  getFarcasterUserCasts,
+  //   getFarcasterUserCasts,
   getFarcasterUserReactions,
   getUserDetails,
   getUserTrendingCasts,
 } from "../airstack";
-import { UserAnalytics } from "../types";
+import { FarcasterUserCasts, UserAnalytics } from "../types";
 
 export async function getUserAnalytics(
   fid: number,
@@ -14,22 +14,23 @@ export async function getUserAnalytics(
   console.log(timeRange);
 
   try {
-    const [userDetails, userCasts, userReactions, trendingCasts] =
-      await Promise.all([
-        getUserDetails(fid),
-        getFarcasterUserCasts(fid),
-        getFarcasterUserReactions(fid),
-        getUserTrendingCasts(fid),
-      ]);
+    const [userDetails, userReactions, trendingCasts] = await Promise.all([
+      getUserDetails(fid),
+      // getFarcasterUserCasts(fid),
+      getFarcasterUserReactions(fid),
+      getUserTrendingCasts(fid),
+    ]);
 
     const social = userDetails.Socials.Social[0];
-    const casts = userCasts.FarcasterCasts.Cast;
+    // const casts =  userCasts.FarcasterCasts.Cast;
+    const casts: FarcasterUserCasts["FarcasterCasts"]["Cast"] = [];
+
     const reactions = userReactions.FarcasterReactions.Reaction;
     const trending = trendingCasts.TrendingCasts.TrendingCast || [];
 
     // Channel analytics
     const channelCounts = casts.reduce((acc: Record<string, number>, cast) => {
-      const channelId = cast.channel?.channelId;
+      const channelId = cast?.channel?.channelId;
       if (channelId) {
         acc[channelId] = (acc[channelId] || 0) + 1;
       }
