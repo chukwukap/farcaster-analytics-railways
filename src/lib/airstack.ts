@@ -107,6 +107,7 @@ export async function getUserDetails(fid: number): Promise<UserDetails> {
     }
   }
 }`;
+
   const data = await queryAirstack(USER_DETAILS_QUERY, {
     fid: fid.toString(),
   });

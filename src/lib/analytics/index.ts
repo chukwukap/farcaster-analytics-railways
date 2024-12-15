@@ -1,10 +1,10 @@
 import {
-  //   getFarcasterUserCasts,
+  getFarcasterUserCasts,
   getFarcasterUserReactions,
   getUserDetails,
   getUserTrendingCasts,
 } from "../airstack";
-import { FarcasterUserCasts, UserAnalytics } from "../types";
+import { UserAnalytics } from "../types";
 
 export async function getUserAnalytics(
   fid: number,
@@ -14,16 +14,17 @@ export async function getUserAnalytics(
   console.log(timeRange);
 
   try {
-    const [userDetails, userReactions, trendingCasts] = await Promise.all([
-      getUserDetails(fid),
-      // getFarcasterUserCasts(fid),
-      getFarcasterUserReactions(fid),
-      getUserTrendingCasts(fid),
-    ]);
+    const [userDetails, userCasts, userReactions, trendingCasts] =
+      await Promise.all([
+        getUserDetails(fid),
+        getFarcasterUserCasts(fid),
+        getFarcasterUserReactions(fid),
+        getUserTrendingCasts(fid),
+      ]);
 
     const social = userDetails.Socials.Social[0];
-    // const casts =  userCasts.FarcasterCasts.Cast;
-    const casts: FarcasterUserCasts["FarcasterCasts"]["Cast"] = [];
+    const casts = userCasts.FarcasterCasts.Cast;
+    // const casts: FarcasterUserCasts["FarcasterCasts"]["Cast"] = [];
 
     const reactions = userReactions.FarcasterReactions.Reaction;
     const trending = trendingCasts.TrendingCasts.TrendingCast || [];
