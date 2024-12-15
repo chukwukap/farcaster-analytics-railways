@@ -1,2 +1,2 @@
 export const appUrl =
-  process.env.NEXT_PUBLIC_URL || "https://farcaster-insights.vercel.app";
+  process.env.NEXT_PUBLIC_URL || "https://farcaster.up.railway.app";
